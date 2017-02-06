@@ -1,0 +1,1 @@
+start /d c:\users\jseidel\downloads\ nircmd.exe speak file "c:\Users\JSEIDEL\Desktop\speak.txt"

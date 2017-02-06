@@ -1,0 +1,45 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+	<title>Ghost Email Subscription</title>
+<!-- define some style elements-->
+<style>
+label,a 
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px; 
+}
+
+</style>	
+<!-- a helper script for vaidating the form-->
+<script language="JavaScript" src="http://server/scripts/gen_validatorv31.js" type="text/javascript"></script>
+</head>
+
+
+<body>
+
+<!-- Start code for the form-->
+<form method="post" name="myemailform" action="http://server/form-to-email.php">
+	<p>
+		<label for='name'>Enter Name: </label><br>
+		<input type="text" name="name">
+	</p>
+	<p>
+		<label for='email'>Enter Email Address:</label><br>
+		<input type="text" name="email">
+	</p>
+	<input type="submit" name='submit' value="submit">
+</form>
+<script language="JavaScript">
+// Code for validating the form
+// Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
+// for details
+var frmvalidator  = new Validator("myemailform");
+frmvalidator.addValidation("name","req","Please provide your name"); 
+frmvalidator.addValidation("email","req","Please provide your email"); 
+frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Are you smart enough to play the ghost sound?</title>
+
+<script>
+var questions = new Array();
+questions[0] = 'There was an airplane crash, every single person on board died, but yet two people survived. How is this possible?';
+questions[1] = 'How many times can you subtract 10 from 100?';
+questions[2] = 'Which month has 28 days?';
+questions[3] = 'How can a man go eight days without sleep?';
+questions[4] = 'Before Mt. Everest was discovered, what was the highest mountain in the world?';
+
+var choices = [['They were not on the plane','They were saved','The two were married']];
+choices.push(['Ten','Once','Five']);
+choices.push(['February','All','The first 6 months of the year']);
+choices.push(['By sleeping at night','Drinking a lot of caffeine','Going to different time zones']);
+choices.push(['Mt. Aconcagua','Mt. Mckinley','Mt. Everest']);
+
+var answers = new Array();
+answers[0] = ['The two were married'];
+answers[1] = ['Once'];
+answers[2] = ['All'];
+answers[3] = ['By sleeping at night'];
+answers[4] = ['Mt. Everest'];
+
+var askedquestion = new Array();
+askedquestion[0] = 'no';
+askedquestion[1] = 'no';
+askedquestion[2] = 'no';
+askedquestion[3] = 'no';
+askedquestion[4] = 'no';
+
+var questionsAsked = 0;
+var totalCorrect = 0;
+var currentQuestion = 0;
+var selectionValid = false;
+
+
+//Load up first question
+
+var listQuestion = function(){
+    selectionValid = false; 
+    while (selectionValid == false) {
+	currentQuestion = Math.floor(Math.random() * 5);
+    	if (askedquestion[currentQuestion] == 'no') {
+		selectionValid = true;
+	}
+    }
+// currentQuestion = 0;
+document.getElementById("myDiv1").innerHTML = questions[currentQuestion];
+document.getElementById("myDiv2").innerHTML = '<input id = "choices[currentQuestion][0]" type = "radio" name = "questionchoice">' + choices[currentQuestion][0];
+document.getElementById("myDiv3").innerHTML = '<input id = "choices[currentQuestion][1]" type = "radio" name = "questionchoice">' + choices[currentQuestion][1];
+document.getElementById("myDiv4").innerHTML = '<input id = "choices[currentQuestion][2]" type = "radio" name = "questionchoice">' + choices[currentQuestion][2];
+askedquestion[currentQuestion] = "yes";
+questionsAsked = questionsAsked + 1;
+};
+
+  function processAnswer(myAnswer) {
+            if (answers[currentQuestion] == myAnswer) {
+                // answer correct
+		// alert("Congrats! You unlocked the Ghost sound.");
+		// window.open("sound.php");
+		// window.open('', '_self', ''); window.close();
+                // document.getElementById("ButtonContinue").disabled = true;
+                 totalCorrect = totalCorrect + 1;
+            }
+        }
+  function checkAnswer() {
+        if (document.getElementById("choices[currentQuestion][0]").checked) {
+                processAnswer(choices[currentQuestion][0]);
+            }
+	if (document.getElementById("choices[currentQuestion][1]").checked) {
+                processAnswer(choices[currentQuestion][1]);
+            }
+	if (document.getElementById("choices[currentQuestion][2]").checked) {
+                processAnswer(choices[currentQuestion][2]);
+            }
+ if (totalCorrect == 4) {
+	alert("Congrats! You unlocked the ghost sound.");
+	window.open("http://server/sound.php");
+	window.open('', '_self', ''); window.close();
+        document.getElementById("ButtonContinue").disabled = true;
+	}
+ if (questionsAsked < 5) {
+                listQuestion();
+            }
+            // final question asked - disable button and show final results
+            else {
+                alert("Sorry. But you were unable to unlock the ghost sound. Try again by reloading the page.");
+                document.getElementById("ButtonContinue").disabled = true;
+            }
+}
+
+window.onload = listQuestion;
+</script>
+</head>
+<body>
+<p><b>Are you smart enough to play the ghost sound?</b></p>
+<div id="myDiv1">t1</div> 
+<div id="myDiv2">t2</div>
+<div id="myDiv3">t3</div>
+<div id="myDiv4">t4</div>
+<input id="ButtonContinue" onclick="checkAnswer();" type="button" value="continue" />
+</body>
+</html>

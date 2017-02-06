@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Trinity Office Cameras</title>
+  <style>
+    div.container {
+      display:inline-block;
+    }
+
+    p {
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+<h1>Trinity Office Cameras</h1>
+  <div class="container">
+    <img id="jpeg_0" width="500" height="400"><script type="text/javascript">
+	var camera_0 = {
+		addEvent: function(elem, event, func ){
+			if (typeof (window.event) != 'undefined')
+				{elem.attachEvent('on' + event, func);}
+			else
+				{elem.addEventListener(event, func, false);}
+		},
+		initCamera: function(jpeg, serverUrl, token, id, interval){
+		  this.addEvent(jpeg, 'load', function(){setTimeout(function() {camera_1.showJpegFrame(jpeg, serverUrl, token, id);}, interval);});
+		  this.showJpegFrame(jpeg, serverUrl, token, id);
+		},
+		showJpegFrame: function(jpeg, serverUrl, token, id){
+			jpeg.src = serverUrl+"/Jpeg/"+id+"?authToken="+token+"&"+new Date().getTime();
+		}
+	}
+
+camera_0.initCamera(jpeg_0, "http://server:8080", "440cf8b2-2529-4d3d-ab22-1d9927b6665b", 0, 40);
+</script>
+    <p>Trinity Server Room</p>
+  </div>
+<form>
+<input type="button" value="Play Another Sound"
+onclick="window.open('http://julian.cx/office/brickgame.html')"
+/>
+</form>
+
+<form>
+<input type="button" value="Play Ghost Sound"
+onclick="window.open('http://julian.cx/office/game.html')"
+/>
+</form>
+
+<form>
+<input type="button" value="Make My Computer Speak"
+onclick="window.open('http://server/sound3.php')"
+/>
+</form>
+
+<form method="post" action="http://server/speak.php" target="_blank">
+What do you want to say to me? <br>
+<input type="text" name="value"> <br>
+<input type="submit">
+</form>
+
+<form>
+<input type="button" value="Email Ghost"
+onclick="window.open('http://julian.cx/office/form-page.html')"
+/>
+</form>
+
+</body>
+</html>
