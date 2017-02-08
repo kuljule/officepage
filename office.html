@@ -4,7 +4,9 @@
   <meta charset=utf-8 />
   <title>Trinity Office Cameras</title>
   <style>
+  body {text-align:center;}
     div.container {
+		text-align:center;
       display:inline-block;
     }
 
@@ -17,25 +19,7 @@
 <body>
 <h1>Trinity Office Cameras</h1>
   <div class="container">
-    <img id="jpeg_0" width="500" height="400"><script type="text/javascript">
-	var camera_0 = {
-		addEvent: function(elem, event, func ){
-			if (typeof (window.event) != 'undefined')
-				{elem.attachEvent('on' + event, func);}
-			else
-				{elem.addEventListener(event, func, false);}
-		},
-		initCamera: function(jpeg, serverUrl, token, id, interval){
-		  this.addEvent(jpeg, 'load', function(){setTimeout(function() {camera_1.showJpegFrame(jpeg, serverUrl, token, id);}, interval);});
-		  this.showJpegFrame(jpeg, serverUrl, token, id);
-		},
-		showJpegFrame: function(jpeg, serverUrl, token, id){
-			jpeg.src = serverUrl+"/Jpeg/"+id+"?authToken="+token+"&"+new Date().getTime();
-		}
-	}
-
-camera_0.initCamera(jpeg_0, "http://server:8080", "440cf8b2-2529-4d3d-ab22-1d9927b6665b", 0, 40);
-</script>
+<img id="mjpeg_0" src="http://server:8050/Mjpeg/0?authToken=440cf8b2-2529-4d3d-ab22-1d9927b6665b" width="640" height="480"/>
     <p>Trinity Server Room</p>
   </div>
 <form>
